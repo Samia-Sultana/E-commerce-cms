@@ -1,0 +1,165 @@
+        @media (min-width:992px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+
+        @media (min-width:1600px) {
+            .container-xxl {
+                max-width: 1560px;
+            }
+        }
+
+        /**Extra small devices (portrait phones, less than 576px)**/
+
+        @media (max-width: 575.98px) {
+            .owl-nav button {
+                top: 40%;
+            }
+
+            .owl-nav button.owl-prev,
+            .owl-nav button.owl-next {
+                width: 25px;
+            }
+
+            .islamic-pattern-1 img {
+                height: auto;
+            }
+
+            .product-carousel {
+                padding: 20px 0px;
+            }
+
+            .slider-part {
+                padding-top: 105px;
+                padding-bottom: 0px;
+            }
+
+            .banner-content-out {
+                position: relative;
+                text-align: center;
+                padding-top: 0px;
+                padding-bottom: 20px;
+            }
+
+            .price-div{
+                font-size: 12px;
+            }
+
+            .products-wrapper .single-product-item .product-details .btn-add-to-cart {
+                margin-top: 10px;
+                background-color: var(--primary-color);
+                color: #fff;
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+
+            .product-banner-2{
+                background-color: #a3cef1;
+                padding: 30px;
+            }
+
+            .product-count{
+                border: 1px solid #e0e0e0;
+                border-radius: 3px;
+                width: 120px;
+             }
+        }
+
+        /**Small devices (landscape phones, 576px and up)**/
+
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .header .menu>ul>li .menu-subs.menu-mega {
+                height: 100%;
+
+            }
+
+            .product-banner-2{
+                background-color: #a3cef1;
+                padding: 50px;
+            }
+
+            .product-count{
+                border: 1px solid #e0e0e0;
+                border-radius: 3px;
+                width: 120px;
+             }
+
+
+        }
+
+        /**Medium devices (tablets, 768px and up)**/
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .product-banner-2{
+                background-color: #a3cef1;
+                padding: 50px;
+            }
+            .product-count{
+                border: 1px solid #e0e0e0;
+                border-radius: 3px;
+                width: 130px;
+             }
+        }
+
+        /**Large devices (desktops, 992px and up)**/
+
+        @media (min-width: 992px) and (max-width: 1199.98px) {}
+
+        /**Extra large devices (large desktops, 1200px and up)**/
+
+        @media (min-width: 1200px) {
+            .islamic-pattern-1 img {
+                height: auto;
+            }
+            .product-banner-2{
+                background-color: #a3cef1;
+                padding: 80px;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:1199.98px) {
+            .banner-title h3 {
+                font-size: 14px;
+            }
+
+            .link1 {
+                font-size: 10px;
+            }
+
+            .banner-border::after,
+            .banner-border-hover::after {
+                content: "";
+                position: absolute;
+                top: 15px;
+                bottom: 15px;
+                left: 15px;
+                right: 15px;
+                border: 3px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .banner .banner-content {
+                position: absolute;
+                left: 20px;
+                bottom: 20px;
+            }
+        }
+
+        @media (max-width:991.98px) {
+            .p-x-5 {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+
+            .products-wrapper .single-product-item .product-details h2 {
+                font-size: 14px;
+                text-transform: capitalize;
+                font-weight: 600;
+            }
+
+
+            .product-code {
+                font-size: 12px;
+            }
+        }
