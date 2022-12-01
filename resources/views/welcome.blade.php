@@ -35,19 +35,13 @@
     <header class="header" id="header-area">
         <div class="container">
             <section class="wrapper">
+            <!----------------dynamic logo---------------->
                 <div class="header-item-left">
                     <a href="index.html" class="brand">
-                        <img src="assets/img/logo/logo.png" alt="logo not found">
+                        <img src="{{asset('images/'. $logo->image)}}" alt="logo not found">
                     </a>
                 </div>
-
-
-
-
-
-
-
-
+            <!------------daynamic navigation bar-------------------->
                 <div class="header-item-center">
                     <div class="overlay"></div>
                     <nav class="menu" id="menu">
@@ -58,9 +52,6 @@
                             <button type="button" class="menu-mobile-close"><i class="ion ion-ios-close"></i></button>
                         </div>
                         <ul class="menu-section mb-0">
-                            <li class="menu-item blinking"><a href="{{ route('login') }}">login</a></li>
-                            <li class="menu-item"><a href="{{ route('admin.login') }}">admin-login</a></li>
-                            <li class="menu-item"><a href="{{ route('register') }}">user-reg</a></li>
 
                             @foreach($navigation as $navItem)
                
@@ -73,7 +64,7 @@
                     </nav>
                 </div>
 
-
+            <!-------------search, mini cart,sidenav---------------->
                 <div class="header-right-meta text-right header-item-righ">
                     <ul>
                         <li><a href="#" class="modal-active"><i class="fa fa-search"></i></a></li>
@@ -248,16 +239,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="owl-carousel owl-theme slider-carousel">
+                        @foreach($slider as $item)
                         <div class="item">
                             <a href="#">
-                                <img src="assets/img/slider/slider1.jpg" alt="slider img not found">
+                                <img src="{{asset('images/'. $item->image)}}" alt="slider img not found">
                             </a>
                         </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/img/slider/slider1.jpg" alt="slider img not found">
-                            </a>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
@@ -717,7 +706,7 @@
                                 </a>
                             </li> 
                             @endforeach
-                            <li class="list-inline-item">
+                            <!---------------<li class="list-inline-item">
                                 <a href="#!" class="sbtn btn-large mx-1" title="Facebook">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
@@ -733,6 +722,7 @@
                                     <i class="fab fa-pinterest-p"></i>
                                 </a>
                             </li>
+                            ---------------------->
                         </ul>
                     </div>
                 </div>

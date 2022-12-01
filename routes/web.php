@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\CatagoryController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogoController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialmediaController;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +48,18 @@ Route::prefix('admin')->group(function(){
     Route::post('/nav', [NavbarController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('createNav');
     Route::get('/socialMedia', [SocialmediaController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('socialMedia');
     Route::post('/socialMedia', [SocialmediaController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('createSocialMedia');
+    Route::get('/catagory', [CatagoryController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('catagory');
+    Route::post('/catagory', [CatagoryController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('createCatagory');
+    Route::get('/product', [ProductController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('product');
+    Route::post('/product', [ProductController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('createProduct');
+    Route::get('/logo',[LogoController::class,'index'])->middleware(['auth:admin', 'verified'])->name('logo');
+    Route::post('/logo',[LogoController::class,'store'])->middleware(['auth:admin', 'verified'])->name('createLogo');
+    Route::get('/slider',[SliderController::class,'index'])->middleware(['auth:admin', 'verified'])->name('slider');
+    Route::post('/slider',[SliderController::class,'store'])->middleware(['auth:admin', 'verified'])->name('createSlider');
+    
+
+
+
     
 });
  
