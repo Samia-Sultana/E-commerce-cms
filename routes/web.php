@@ -5,6 +5,7 @@ use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialmediaController;
 use Illuminate\Auth\Events\Logout;
@@ -24,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
+Route::get('/product/details/{id}',[ProductController::class,'show'])->name('showProduct');
+Route::get('/add-to-cart/{id}',[ProductController::class,'addToCart'])->name('addToCart');
+Route::get('/view-cart',[CartController::class,'viewCart'])->name('shoppingCart');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

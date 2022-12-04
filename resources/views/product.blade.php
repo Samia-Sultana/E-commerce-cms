@@ -5,7 +5,7 @@
   <label for="price">Price</label><br>
   <input type="text" id="price" name="price" value=""><br><br>
   <label for="image">images</label><br>
-  <input type="file" id="image" name="image" />
+  <input type="file" id="image" name="images[]" multiple="multiple" />
   <label for="catagory">Choose a catagory:</label>
     <select name="catagory" id="catagory" >
         @foreach($catagories as $catagory )

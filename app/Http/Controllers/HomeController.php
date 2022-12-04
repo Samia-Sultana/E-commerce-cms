@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catagory;
 use App\Models\Logo;
 use App\Models\Navbar;
 use App\Models\Product;
@@ -16,8 +17,9 @@ class HomeController extends Controller
         $socialMedia = Socialmedia::all();
         $logo = Logo::find(4);
         $slider = Slider::all();
+        $catagories = Catagory::all();
         $latest = Product::where('latest_product',0)->get();
         $top = Product::where('top_rated',1)->get();
-        return view('welcome',compact('navigation', 'socialMedia','logo','slider','latest','top'));
+        return view('welcome',compact('navigation', 'socialMedia','logo','slider','latest','top','catagories'));
     }
 }

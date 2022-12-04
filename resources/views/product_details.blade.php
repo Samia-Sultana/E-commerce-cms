@@ -21,8 +21,12 @@
     <!---======= owl carousel======-->
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+
     <!---======= Header css-->
     <link rel="stylesheet" href="assets/css/header-css/reset.min.css">
+    <!---==========zoom css=========-->
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/easyzoom.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
 
@@ -35,13 +39,12 @@
     <header class="header" id="header-area">
         <div class="container">
             <section class="wrapper">
-            <!----------------dynamic logo---------------->
                 <div class="header-item-left">
                     <a href="index.html" class="brand">
-                        <img src="{{asset('images/'. $logo->image)}}" alt="logo not found">
+                        <img src="assets/img/logo/logo.png" alt="logo not found">
                     </a>
                 </div>
-            <!------------daynamic navigation bar-------------------->
+                <!-- Navbar Section -->
                 <div class="header-item-center">
                     <div class="overlay"></div>
                     <nav class="menu" id="menu">
@@ -52,33 +55,76 @@
                             <button type="button" class="menu-mobile-close"><i class="ion ion-ios-close"></i></button>
                         </div>
                         <ul class="menu-section mb-0">
-                        <li class="menu-item-has-children">
+                            <li class="menu-item blinking"><a href="new_arrival.html">New Arrivals</a></li>
+                            <li class="menu-item-has-children">
                                 <a href="#">Products <i class="fas fa-chevron-down"></i> </a>
                                 <div class="menu-subs menu-mega menu-column-4">
-                                @foreach($catagories as $catagory)
                                     <div class="list-item text-center">
-                                        <a href="{{'/' . $catagory->catagoryName}}">
+                                        <a href="#">
                                             <img src="assets/img/product/panjabi/p1.jpg" loading="lazy"
                                                 alt="Product Images">
-                                            <h4 class="title">{{$catagory->catagoryName}}</h4>
-                                        </a> 
+                                            <h4 class="title">Panjabi</h4>
+                                        </a>
                                     </div>
-                                @endforeach
+                                    <div class="list-item text-center">
+                                        <a href="#">
+                                            <img src="assets/img/product/jubba/jubba.jpg" loading="lazy"
+                                                alt="Product Images">
+                                            <h4 class="title">Product Two</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="#">
+                                            <img src="assets/img/product/tupi/tupi.jpg" loading="lazy"
+                                                alt="Product Images">
+                                            <h4 class="title">Tupi</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="#">
+                                            <img src="assets/img/product/fragrance/attar.jpg" loading="lazy"
+                                                alt="Product Images">
+                                            <h4 class="title">Fragrance</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="#">
+                                            <img src="assets/img/product/panjabi/p1.jpg" loading="lazy"
+                                                alt="Product Images">
+                                            <h4 class="title">Panjabi</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="#">
+                                            <img src="assets/img/product/jubba/jubba.jpg" loading="lazy"
+                                                alt="Product Images">
+                                            <h4 class="title">Product Two</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="#">
+                                            <img src="assets/img/product/tupi/tupi.jpg" loading="lazy"
+                                                alt="Product Images">
+                                            <h4 class="title">Tupi</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="#">
+                                            <img src="assets/img/product/fragrance/attar.jpg" loading="lazy"
+                                                alt="Product Images">
+                                            <h4 class="title">Fragrance</h4>
+                                        </a>
+                                    </div>
                                 </div>
                             </li>
-
-                            @foreach($navigation as $navItem)
-               
-                            <li class="menu-item"><a href="{{$navItem->url}}">{{$navItem->title}}</a></li>
-               
-                            @endforeach
-
-                           
+                            <li class="menu-item"><a href="blog.html">Blog</a></li>
+                            <li class="menu-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="menu-item"><a href="sale.html">Sale</a></li>
                         </ul>
                     </nav>
                 </div>
 
-            <!-------------search, mini cart,sidenav---------------->
+
                 <div class="header-right-meta text-right header-item-righ">
                     <ul>
                         <li><a href="#" class="modal-active"><i class="fa fa-search"></i></a></li>
@@ -210,7 +256,7 @@
                                         </div>
                                     </div>
                                     <div class="mini-cart-footer">
-                                        <a href="{{'/view-cart'}}" class="btn-add-to-cart mb-2">View Cart</a>
+                                        <a href="shopping_cart.html" class="btn-add-to-cart mb-2">View Cart</a>
                                         <a href="checkout.html" class="btn-add-to-cart">Checkout</a>
                                     </div>
                                 </div>
@@ -233,7 +279,7 @@
 
     <!--== Search Box Area Start ==-->
     <div class="body-popup-modal-area">
-        <span class="modal-close"><img src="assets/img/cancel.png" alt="Close" class="img-fluid" /></span>
+        <span class="modal-close"><img src="assets/img/cancel.png" alt="Close" class="img-responsive" /></span>
         <div class="modal-container d-flex">
             <div class="search-box-area">
                 <div class="search-box-form">
@@ -247,261 +293,196 @@
     </div>
     <!--== Search Box Area End ==-->
 
-    <!---==================slider start====================-->
-    <section class="slider-part">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="owl-carousel owl-theme slider-carousel">
 
-                        @foreach($slider as $item)
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{asset('images/'. $item->image)}}" alt="slider img not found">
-                            </a>
+
+    <!--=================product details part start =============-->
+    <section class="main-content p-tb-60">
+        <div class="container container-xxl">
+            <h3 class="pb-3">Product Details</h3>
+            <div class="row d-flex justify-content-between">
+                <div class="col-lg-5 col-md-5 single-product-page-content">
+                    <div class="product__carousel">
+                        <div class="gallery-parent">
+                            <!-- SwiperJs and EasyZoom plugins start -->
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    <?php $iteration = 1 ?>
+                                    @foreach($images as $image)
+                                    @if($iteration == 1)
+                                    <div class="swiper-slide easyzoom easyzoom--overlay">
+                                        <a href="{{asset('images/' . $image->image)}}">
+                                            <img src="{{asset('images/' . $image->image)}}" alt="img not found" />
+                                        </a>
+                                    </div>
+                                    @else
+                                        @break
+                                    @endif
+                                    <?php $iteration++ ?>
+                                    @endforeach
+                                    
+                                    
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white"><i class="fas fa-angle-right"></i>
+                                </div>
+                                <div class="swiper-button-prev swiper-button-white"><i class="fas fa-angle-left"></i>
+                                </div>
+                            </div>
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @foreach($images as $image)
+                                    <div class="swiper-slide">
+                                        <img src="{{asset('images/' . $image->image)}}" alt="" />
+                                    </div>
+                                    @endforeach
+                                    
+                                </div>
+                            </div>
+                            <!-- SwiperJs and EasyZoom plugins end -->
                         </div>
-                        @endforeach
+                    </div>
+
+
+
+
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product-details">
+                        <h2 style="font-size: 22px;">{{$productDetail->productName}}</h2>
+                        <div class="product-code">
+                            <span class="code-title">Product Code: </span>
+                            <span class="code-no">{{$productDetail->id}}</span>
+                        </div>
+                        <div class="price-div">
+                            <span class="price">BDT {{$productDetail->productPrice}}</span>
+                            <span class="discount-price line-through">BDT 1500</span>
+                        </div>
+                    </div>
+
+                    <div class="product-size-part d-flex justify-content-between mt-5">
+                        <div class="product-size">
+                            <h4 style="margin-bottom:-15px">SIZE</h4>
+                            <fieldset>
+                                <ul class="">
+                                    <li>
+                                        <input type="radio" name="dress2" id="dress4XS" value="XS">
+                                        <label class="b-1" for="dress4XS">XS</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="dress2" id="dress4S" value="S">
+                                        <label class="b-1" for="dress4S">S</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="dress2" id="dress4M" value="M">
+                                        <label class="b-1" for="dress4M">M</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="dress2" id="dress4L" value="L">
+                                        <label class="b-1" for="dress4L">L</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="dress2" id="dress4XL" value="XL">
+                                        <label class="b-1" for="dress4XL">XL</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </div>
+
+                        <div class="size-guide">
+                            <button type="button" class="size-modal" data-toggle="modal" data-target="#size_chart">
+                                SIZE GUIDE
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="size_chart" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="assets/img/size_guide/size-chart-1.jpg" class="img-fluid" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="add-to-cart-lg">
+                        
+                        <a href="{{'/add-to-cart/'.$productDetail->id}}"><input type="submit" value="ADD TO CART"></a>
                         
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!---==================slider end====================-->
 
+                    <!--==============Collapse info========-->
 
-    <!--=========Product banner start===================-->
-    <section class="p-tb-60 section-bg">
-        <div class="container container-xxl">
-            <div class="row">
-                <?php $iteration = 0 ?>
-                @foreach($latest as $item)
-                    <?php $iteration = $iteration+1 ?>
-                    @if($iteration == 2)
-                    <div class="col-md-4">
-                    <div class="banner banner-border">
-                        <a href="exclusive_product.html">
-                            <img src="{{asset('images/' . $item->image1)}}" class="img-responsive" alt="">
-                        </a>
-                        <div class="banner-content">
-                            <div class="banner-title">
-                                <h3>Exclusive collection</h3>
+                    <div id="accordion" class="accordion p-details-accordion">
+                        <div class="card mb-0">
+                            <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                                <a class="card-title">
+                                    DESCRIPTION
+                                </a>
                             </div>
-                            <a href="exclusive_product.html" class="link1">
-                                Discover Now
-                                <i class="fas fa-long-arrow-alt-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="banner-content-out">
-                            <h3>Exclusive collection</h3>
-                            <p>Grab Your Product</p>
-                    </div>
-                    </div>
-                    
-                    @else
-                        <div class="col-md-4">
-                    <div class="banner banner-border">
-                        <a href="exclusive_product.html">
-                            <img src="{{asset('images/' . $item->image1)}}" class="img-responsive" alt="">
-                        </a>
-                        <div class="banner-content">
-                            <div class="banner-title">
-                                <h3>Exclusive collection</h3>
+                            <div id="collapseOne" class="card-body collapse" data-parent="#accordion">
+                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
+                                    ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food
+                                    truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                                    aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
+                                    ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                                    craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                                    heard of them accusamus labore sustainable VHS.
+                                </p>
                             </div>
-                            <a href="exclusive_product.html" class="link1">
-                                Discover Now
-                                <i class="fas fa-long-arrow-alt-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-                    
-                    @endif
-
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <!--=========Product banner end=====================-->
-
-    <!--===========product category slider======-->
-    <section class="p-tb-60  pattern-3" style="position: relative;">
-        <div class="container-fluid">
-            <div class="heading">
-                <h2>
-                    Product category
-                </h2>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="owl-carousel owl-theme product-carousel">
-                        <div class="item text-center">
-                            <a href="#">
-                                <img src="assets/img/product/jubba/1x1/j1.png" alt="slider img not found">
-                                <span>Panjabi</span>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/img/product/tupi/1x1/t1.png" alt="slider img not found">
-                                <span>Tupi</span>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/img/product/jubba/1x1/j1.png" alt="slider img not found">
-                                <span>Jubba</span>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/img/product/fragrance/1x1/a1.png" alt="slider img not found">
-                                <span>Fragrance</span>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="assets/img/product/tupi/1x1/t1.png" alt="slider img not found">
-                                <span>Tupi</span>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--===========product category slider======-->
-
-    <!--===========new arrivals start============-->
-    <!--== Page Content Wrapper Start ==-->
-    <div id="page-content-wrapper" class="pt-60">
-        <div class="container container-xxl">
-            <div class="heading">
-                <h2>
-                    Our Products
-                </h2>
-            </div>
-
-            <!-- Shop Page Content Start -->
-
-            <div class="shop-page-content-wrap">
-                <div class="shop-page-products-wrap">
-                    <div class="products-wrapper">
-                        <div class="row">
-                        @foreach($top as $item)
-                            <div class="col-lg-3 col-sm-6 col-6 p-x-5">
-                                <!-- Single Product Item -->
-                                <div class="single-product-item text-center mb-3">
-                                    <figure class="product-thumb">
-                                        <a href="{{'/product/details/' . $item->id}}"><img src="{{asset('images/'. $item->image1)}}"
-                                                alt="Products" class="img-fluid"></a>
-                                    </figure>
-
-                                    <div class="product-details">
-                                        <h2><a href="{{'/product/details/' . $item->id}}">{{$item->productName}}</a></h2>
-                                        <div class="product-code">
-                                            <span class="code-title">Product Code: </span>
-                                            <span class="code-no">S-3254</span>
-                                        </div>
-                                        <div class="price-div">
-                                            <span class="price">{{"BDT ". $item->price}}</span>
-                                            <span class="discount-price line-through">BDT 1500</span>
-                                        </div>
-
-                                        
-                                        <button type="button" class="btn-add-to-cart">
-                                            <a href="{{'/add-to-cart/'.$item->id}}">
-                                                +Add to Cart
-                                            </a>
-                                        </button>
-                                       
-                                    </div>
-
-                                    <div class="product-meta">
-                                        <!--<button type="button" data-toggle="modal" data-target="#quickView">
-                                                    <span data-toggle="tooltip" data-placement="left"
-                                                        title="Quick View"><i class="fas fa-eye"></i>
-                                                </button>
-                                                
-                                                <a href="#" data-toggle="tooltip" data-placement="left"
-                                                    title="Compare"><i class="fas fa-tag"></i></a>-->
-
-                                        <a href="#" data-toggle="tooltip" data-placement="left"
-                                            title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                    </div>
-                                    <span class="product-bedge">New</span>
+                            <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion"
+                                href="#collapseTwo">
+                                <a class="card-title">
+                                    DETAILS & FIT
+                                </a>
+                            </div>
+                            <div id="collapseTwo" class="card-body collapse" data-parent="#accordion">
+                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
+                                    ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food
+                                    truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                                    aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
+                                    ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                                    craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                                    heard of them accusamus labore sustainable VHS.
+                                </p>
+                            </div>
+                            <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion"
+                                href="#collapseThree">
+                                <a class="card-title">
+                                    SIZE
+                                </a>
+                            </div>
+                            <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life
+                                    accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
+                                    skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+                                    moon tempor, sunt
+                                    aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                    samus labore sustainable VHS.
                                 </div>
-                                <!-- Single Product Item -->
                             </div>
-                            @endforeach
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Shop Page Content End -->
+                    <!--==============Collapse info========-->
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="view-more">
-                        <a href="product_list.html">
-                            <i class="fas fa-eye"></i>
-                            view more
-
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--== Page Content Wrapper End ==-->
-    <!--===========new arrivals end============-->
-
-    <!--============product banner image =======-->
-    <section class="p-tb-60">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 mx-auto">
-                    <div class="product-banner-2">
-                        <a href="product_list.htmk">
-                            <img src="assets/img/banner/012.jpg" class="img-responsive" alt="banner image not found">
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--============product banner image =======-->
-
-    <!--=================news letter==========-->
-
-    <section class="p-tb-60 section-bg">
-        <div class="container container-xxl">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="newsletter-section">
-                        <h1 class="title">Join our Newsletter</h1>
-                        <div class="input-wrapper">
-                            <label for="newsletter" class="label-text">Enter your Email to Join</label>
-                            <input type="text" id="newsletter">
-                            <button class="btn arrow-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                    class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--=================news letter==========-->
-
+    <!--========= product details end =============-->
 
 
 
@@ -596,14 +577,7 @@
 
                     <div class="pt-2 center-text">
                         <ul class="list-unstyled list-inline">
-                            @foreach($socialMedia as $item)
                             <li class="list-inline-item">
-                                <a href="{{$item->link}}" class="sbtn btn-large mx-1" title="Facebook">
-                                    {{$item->name}}
-                                </a>
-                            </li> 
-                            @endforeach
-                            <!---------------<li class="list-inline-item">
                                 <a href="#!" class="sbtn btn-large mx-1" title="Facebook">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
@@ -619,7 +593,6 @@
                                     <i class="fab fa-pinterest-p"></i>
                                 </a>
                             </li>
-                            ---------------------->
                         </ul>
                     </div>
                 </div>
@@ -645,7 +618,12 @@
     <!--=====header script=====-->
     <script src="assets/js/script.js"></script>
     <!--=====header script=====-->
+    <!--===========zoom ============-->
+    <script src="assets/js/swiper.min.js"></script>
+    <script src="assets/js/easyzoom.js"></script>
+
     <script src="assets/js/main.js"></script>
+    
     <script type="text/Javascript">
         $(".button-qty").on("click", function() {
     
@@ -677,7 +655,6 @@
                 document.getElementById("mySidenav").style.width = "90vw";
             }
         }
-
         /* Set the width of the side navigation to 0 */
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
@@ -685,23 +662,54 @@
         }
     </script>
 
+
+
     <script>
-        /******newsletter */
-        let input = document.querySelector('#newsletter');
-        let labelText = document.querySelector('.label-text');
-        let root = document.querySelector('body');
+        $(document).ready(function () {
+            // product Gallery and Zoom
+            // activation carousel plugin
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 5,
+                freeMode: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                on: {
+                    init: function () {
+                        console.log('swiper initialized');
+                        // activation zoom plugin
+                        var $easyzoom = $('.easyzoom').easyZoom();
+                    },
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 3,
+                    },
+                    992: {
+                        slidesPerView: 4,
+                    },
+                }
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs
+                },
+            });
+            // change carousel item height
+            // gallery-top
+            let productCarouselTopWidth = $('.gallery-top').outerWidth();
+            $('.gallery-top').css('height', productCarouselTopWidth);
 
-        input.addEventListener('click', () => {
-            labelText.classList.add('label-text-up');
-        });
+            // gallery-thumbs
+            let productCarouselThumbsItemWith = $('.gallery-thumbs .swiper-slide').outerWidth();
+            $('.gallery-thumbs').css('height', productCarouselThumbsItemWith);
 
-        document.addEventListener('mousedown', () => {
-            if (!input.value) {
-                labelText.classList.remove('label-text-up');
-            }
-        });
+        })
     </script>
-
 </body>
 
 </html>

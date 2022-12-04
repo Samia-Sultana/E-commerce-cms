@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Catagory;
 use App\Models\Product;
+use App\Models\Productimage;
+use App\Cart;
+use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
+use Symfony\Component\HttpFoundation\Session\Session as HttpFoundationSessionSession;
 
 class ProductController extends Controller
 {
@@ -38,22 +44,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->file('image')){
-            $file = $request->file('image');
+        $insertedProduct = Product::create([
+           'productName' => $request->productName,
+            'price'=> $request->price,
+            'catagory' => $request->get('catagory'),
+            'latest_product' => $request->get('latest'),
+            'top_rated' => $request->get('toprated')
+        ]);
+               
+        if($request->file('images')){
+            $imageArray = [];
+            foreach(($request->file('images')) as $image){
+            $file = $image;
             $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('../public/images'), $filename);
-            $product = new Product();
-            $product['productName'] = $request->productName;
-            $product['price']=$request->price;
-            $product['image1']=$filename;
-            $product['catagory'] = $request->get('catagory');
-            $product['latest_product'] = $request->get('latest');
-            $product['top_rated'] = $request->get('toprated');
+            $file-> move(public_path().'/images', $filename);
+            $imageArray = $filename;
+            Productimage::create([
+                'product_id'=> $insertedProduct['id'],
+                'image'=>$imageArray
+            ]);
  
-        }
-        $product->save();
+            }
+        } 
+        
+        
         $catagories = Catagory::all();
-        return view('product',compact('catagories'));   
+        return view('product',compact('catagories'));  
     }
 
     /**
@@ -62,9 +78,14 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
-    {
-        //
+    public function show(Request $request, $id)
+    {   
+       
+
+
+        $images = Product::find($id)->productImage;
+        $productDetail = Product::find($id);
+        return view('product_details', compact('productDetail','images')) ;
     }
 
     /**
@@ -100,4 +121,13 @@ class ProductController extends Controller
     {
         //
     }
+    public function addToCart(Request $request, $id){
+        $product = Product::find($id);
+        $oldCart  = $request->session()->has('cart')? $request->session()->get('cart'): null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->id);
+        $request->session()->put('cart', $cart);
+        return redirect()->route('welcome');
+    }
+   
 }
