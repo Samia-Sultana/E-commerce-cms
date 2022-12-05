@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>Maknoon Lifestyle</title>
 
     <!---===========favicon=====-->
@@ -401,7 +403,7 @@
                                     </figure>
 
                                     <div class="product-details">
-                                        <h2><a href="{{'/product/details/' . $item->id}}">{{$item->productName}}</a></h2>
+                                        <h2 id="product_name"><a href="{{'/product/details/' . $item->id}}">{{$item->productName}}</a></h2>
                                         <div class="product-code">
                                             <span class="code-title">Product Code: </span>
                                             <span class="code-no">S-3254</span>
@@ -411,11 +413,11 @@
                                             <span class="discount-price line-through">BDT 1500</span>
                                         </div>
 
-                                        
-                                        <button type="button" class="btn-add-to-cart">
-                                            <a href="{{'/add-to-cart/'.$item->id}}">
+                                        <input type="hidden" id="product_id" value="{{$item->id}}"/>
+                                        <button type="button" class="btn-add-to-cart" onclick="addToCart()">
+                                            
                                                 +Add to Cart
-                                            </a>
+                                           
                                         </button>
                                        
                                     </div>
@@ -666,6 +668,13 @@
     $button.parent().find("input").val(newVal);
     
     });
+
+    $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
       </script>
     <script>
         /* Set the width of the side navigation to 250px */
@@ -683,6 +692,28 @@
             document.getElementById("mySidenav").style.width = "0";
 
         }
+        function addToCart(){
+            var product_name = $('#product_name').text();
+            var id = $('#product_id').val();
+            var quantity = 1;
+            
+
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data:{
+                    product_name: product_name,
+                    quantity: quantity,
+                    
+
+                },
+                url: "/cart/data/store/" + id,
+                success:function(data){
+                    console.log(data);
+                }
+            })
+        }
+        
     </script>
 
     <script>

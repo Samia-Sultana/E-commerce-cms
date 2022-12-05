@@ -121,13 +121,6 @@ class ProductController extends Controller
     {
         //
     }
-    public function addToCart(Request $request, $id){
-        $product = Product::find($id);
-        $oldCart  = $request->session()->has('cart')? $request->session()->get('cart'): null;
-        $cart = new Cart($oldCart);
-        $cart->add($product, $product->id);
-        $request->session()->put('cart', $cart);
-        return redirect()->route('welcome');
-    }
+    
    
 }
