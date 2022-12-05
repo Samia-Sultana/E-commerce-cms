@@ -168,9 +168,9 @@
                                                         <form action="#" class="display-flex">
                                                             <div class="increment-wrapper">
                                                                 <input type="text" value="1">
-                                                                <button class="button-qty inc" changeQuantity>
+                                                                <button class="button-qty inc">
                                                                     <i class="fas fa-sort-up"></i></button>
-                                                                <button class="button-qty dec" changeQuantity>
+                                                                <button class="button-qty dec">
                                                                     <i class="fas fa-sort-down"></i></span>
                                                                 </button>
                                                             </div>
@@ -319,21 +319,20 @@
                             <tbody>
                                 @foreach($sessionData->items as $product)
                                 
-                                <tr class="cartpage">
+                                <tr>
                                     <td class="pro-thumbnail"><a href="#"><img class="img-responsive"
                                                 src="{{asset('images/' . $product['item']['image1'])}}" alt="Product" /></a></td>
                                     <td class="pro-title"><a href="#">{{$product['item']['productName']}}</a></td>
                                     <td class="pro-size">XS</td>
-                                    <td class="pro-price tk-part"><span class="tk-sign">{{$product['price']}}</span></td>
+                                    <td class="pro-price tk-part"><span class="tk-sign">{{$product['item']['price']}}</span></td>
                                     <td class="pro-quantity">
-                                        <input type="hidden" value="{{$product['item']['id']}}" class="product_id">
                                         <div class="product-count">
                                             <form action="#" class="display-flex">
                                                 <div class="increment-wrapper">
-                                                    <input type="text" value="{{$product['qty']}}" readonly class="qty-input">
-                                                    <button class="button-qty inc increamentQty">
+                                                    <input type="text" class="qtyField" value="{{$product['qty']}}" readonly>
+                                                    <button class="button-qty inc">
                                                         <i class="fas fa-sort-up"></i></button>
-                                                    <button class="button-qty dec decreamentQty">
+                                                    <button class="button-qty dec">
                                                         <i class="fas fa-sort-down"></i></span>
                                                     </button>
                                                 </div>
@@ -365,7 +364,7 @@
                                     <tr>
                                         <td>Sub Total</td>
                                         <td class="tk-part">
-                                            <span class="tk-sign">{{$sessionData->totalPrice}}</span>
+                                            <span class="tk-sign">230</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -541,12 +540,12 @@
     <script src="assets/js/script.js"></script>
     <!--=====header script=====-->
     <script src="assets/js/main.js"></script>
-    
     <script type="text/Javascript">
         $(".button-qty").on("click", function() {
     
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
+        var productPrice = $button.parent('.pro-price').val();
         $button.blur();
         if ($button.hasClass("inc")) {
         var newVal = parseFloat(oldValue) + 1;
@@ -561,10 +560,11 @@
     
     $button.parent().find("input").val(newVal);
     
+   
+    
     });
+      </script>
       
-
-    </script>
     <script>
         /* Set the width of the side navigation to 250px */
         function openNav() {
@@ -581,61 +581,6 @@
             document.getElementById("mySidenav").style.width = "0";
 
         }
-
-        
-    //increament
-    $('.increamentQty').click(function (e) {
-    e.preventDefault();
-    console.log("increament button hit");
-
-    var quantity = $(this).closest(".cartpage").find('.qty-input').val();
-    var product_id = $(this).closest(".cartpage").find('.product_id').val();
-
-    var data = {
-        
-        'quantity':quantity,
-        'product_id':product_id,
-        'status': 'inc',
-    };
-
-    $.ajax({
-        url: '/update-to-cart',
-        type: 'POST',
-        data: data,
-        success: function (response) {
-            window.location.reload();
-            alertify.set('notifier','position','top-right');
-            alertify.success(response.status);
-        }
-    });
-});
-
-//decreament
-$('.decreamentQty').click(function (e) {
-    e.preventDefault();
-    console.log("deccreament button hit");
-    var quantity = $(this).closest(".cartpage").find('.qty-input').val();
-    var product_id = $(this).closest(".cartpage").find('.product_id').val();
-    console.log(quantity,product_id);
-    var data = {
-        _token:'{{ csrf_token() }}',
-        'quantity':quantity,
-        'product_id':product_id,
-        'status': 'dec',
-    };
-    console.log(data);
-
-    $.ajax({
-        url: '/update-to-cart',
-        type: 'POST',
-        data: data,
-        success: function (response) {
-            window.location.reload();
-            alertify.set('notifier','position','top-right');
-            alertify.success(response.status);
-        }
-    });
-});
         
     </script>
 
